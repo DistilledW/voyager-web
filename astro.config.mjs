@@ -1,10 +1,9 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 // https://astro.build/config 
 
 export default defineConfig({
     site: 'https://anonymous-voyager.netlify.app', 
-    integrations: [tailwind()],
+    integrations: [],
     server: {
         port: 3000
     },
