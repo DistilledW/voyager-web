@@ -1,0 +1,24 @@
+{
+    "name": "voyager-web",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/tailwind": "^4.0.0",
+        "astro": "^4.16.18",
+        "astro-icon": "^1.1.0",
+        "dotenv": "^16.4.7",
+        "fs-extra": "^11.3.0",
+        "marked": "^15.0.4",
+        "tailwindcss": "^4.0.0"
+    },
+    "devDependencies": {
+        "postcss": "^8.4.0",
+        "autoprefixer": "^10.4.0"
+    }
+}
