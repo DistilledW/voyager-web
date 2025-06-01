@@ -39,15 +39,15 @@ function formatCanonicalURL(url: string | URL) {
         <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
         <meta name="description" content= "" />
     </head>
-    <body class="antialiased">
-        <nav class="p-4 sm:p-5" >
-            <div class="flex justify-center w-full ">
-                <h1 class="text-center text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
-                    Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone
-                </h1>
-            </div>
-        </nav>
+    <body class="antialiased bg-neutral text-white">
+        <div class="flex justify-center items-center min-h-screen w-full ">
+            <h1 class="text-center text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
+                Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone
+            </h1>
+        </div>
+
         <slot />
+        
         <footer class="flex justify-center px-4 py-16 sm:px-5 sm:py-24">
             <div class="text-center" set:html={marked.parse("Voyager @ 2025")} />
         </footer>
