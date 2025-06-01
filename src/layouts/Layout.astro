@@ -48,8 +48,8 @@ function formatCanonicalURL(url: string | URL) {
             </div>
         </nav>
         <slot />
-        <footer class="px-4 py-16 sm:px-5 sm:py-24">
-            <div class="mx-auto text-center max-w-7xl" set:html={marked.parse("Voyager @ 2025")} />
+        <footer class="flex justify-center px-4 py-16 sm:px-5 sm:py-24">
+            <div class="text-center" set:html={marked.parse("Voyager @ 2025")} />
         </footer>
     </body>
 </html>
