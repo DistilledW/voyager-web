@@ -1,0 +1,14 @@
+---
+interface Props extends Header {
+    title?: string;
+}
+
+const { title } = Astro.props;
+---
+<nav class="p-4 sm:p-5" >
+  <div class="flex justify-center w-full mx-auto max-w-7xl">
+    <a href="/" class="text-xl sm:text-2xl font-bold uppercase text-center" >
+      {title}
+    </a>
+  </div>
+</nav>

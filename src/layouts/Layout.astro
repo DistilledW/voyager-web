@@ -1,9 +1,6 @@
 ---
-import { type SiteConfig, type CustomImage } from 'types';
-import Footer from '@components/Footer.astro';
-import Header from '@components/Header.astro';
-
 import '../styles/globals.css';
+import { marked } from 'marked';
 
 const titleSuffix = 'Voyager';
 const pageTitle = 'Home';
@@ -44,11 +41,8 @@ function formatCanonicalURL(url: string | URL) {
     <body class="antialiased">
         <Header _type="header" title="Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone" />
         <slot />
-        <Footer _type="footer" text="Voyager @ 2025" />
-        <script is:inline>
-            window.addEventListener('stackbitObjectsChanged', () => {
-                window.location.reload();
-            });
-        </script>
+        <footer class="px-4 py-16 sm:px-5 sm:py-24">
+            <div class="mx-auto text-center max-w-7xl" set:html={marked.parse("Voyager @ 2025")} />
+        </footer>
     </body>
 </html>
