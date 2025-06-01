@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
     site: 'https://anonymous-voyager.netlify.app', 
+    output: 'static', 
     integrations: [],
     server: {
         port: 3000
