@@ -27,8 +27,7 @@ function formatCanonicalURL(url: string | URL) {
         <!-- High Priority Global Metadata -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <h1 class=" text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg"> {title} </h1>
-
+        <title>{title}</title>
         <meta name="generator" content={Astro.generator} />
 
         <!-- Fonts -->
@@ -43,9 +42,18 @@ function formatCanonicalURL(url: string | URL) {
     <body class="antialiased">
         <nav class="p-4 sm:p-5" >
             <div class="flex justify-center w-full mx-auto max-w-7xl">
-                <a href="/" class="text-xl sm:text-2xl font-bold uppercase text-center" >
+            <h1 class="text-center text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
+                "Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone" 
+            </h1>
+            <section class="w-full px-4 py-24 bg-black">
+                <h1 class="text-center text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg"> 
                     "Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone" 
-                </a>
+                </h1>
+            </section>
+
+            <a href="/" class="text-xl sm:text-2xl font-bold uppercase text-center" >
+                    "Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone" 
+                </a>    
             </div>
         </nav>
         <slot />
