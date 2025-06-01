@@ -40,6 +40,14 @@ function formatCanonicalURL(url: string | URL) {
         <meta name="description" content= "" />
     </head>
     <body class="antialiased">
+        <div class="flex justify-center items-center w-full bg-red-200 ">
+            <h1 class="text-center text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
+                Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone
+            </h1>
+        </div>
         <slot />
+        <footer class="flex justify-center px-4 py-16 sm:px-5 sm:py-24">
+            <div class="text-center" set:html={marked.parse("Voyager @ 2025")} />
+        </footer> 
     </body>
 </html>
