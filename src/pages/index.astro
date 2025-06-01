@@ -4,10 +4,18 @@ const title = 'Home';
 ---
 
 <Layout>
+	<div class="flex justify-center items-center w-full bg-red-200 ">
+		<h1 class="text-center text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
+			Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone
+		</h1>
+	</div>
     <div data-sb-object-id="a59d87e4-e3ff-4929-acc1-d67b1808d36c">
 		<video src="/demo.mp4" controls autoplay muted loop width="640" height="360" style="max-width: 100%; height: auto;">
 		  	The browser you are using does not support the video tag. 
 		</video>
-		<img src="/figs/building.png" alt="PDF preview" />
-    </div>
-</Layout>
+		<img src="/figs/building.png" alt="PDF preview" style="max-width: 80%; height: auto;" />
+    </div> 
+	<footer class="flex justify-center px-4 py-16 sm:px-5 sm:py-24">
+		<div class="text-center" set:html={marked.parse("Voyager @ 2025")} />
+	</footer> 
+</Layout> 
