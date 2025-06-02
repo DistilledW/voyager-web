@@ -117,7 +117,7 @@ body {
 .bal-container-small {
     position: relative;
     width: 32vw;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     cursor: grab;
     overflow: hidden;
     border-radius: 10px;
@@ -139,9 +139,8 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
+    z-index: 10;
 }
 
 .bal-before {
@@ -158,22 +157,18 @@ body {
 }
 
 .bal-before-inset {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .bal-after img,
 .bal-before img {
     object-fit: cover;
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     object-position: 50% 50%;
-    top: 0;
-    bottom: 0;
-    left: 0;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
