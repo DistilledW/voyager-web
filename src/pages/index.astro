@@ -6,7 +6,7 @@ const title = 'Home';
 <Layout>
     <div data-sb-object-id="a59d87e4-e3ff-4929-acc1-d67b1808d36c" 
 		style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem; width: 100%; box-sizing: border-box;">
-		<h1 style="text-align: center; font-size: 16rem; font-weight: bold; line-height: 1.4; color: #111;">
+		<h1 style="text-align: center; font-size: 12rem; font-weight: bold; line-height: 1.4; color: #111;">
 			Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone
 		</h1> 
 		<p style="text-align: center; font-size: 4rem; color: #555;"> Anonymous </p>
@@ -17,7 +17,16 @@ const title = 'Home';
 		</video>
 		
 		<h1 style="text-align: center; font-size: 8rem; font-weight: bold; line-height: 1.4; color: #111;"> 🔍Comparison </h1> 
-
+		<div id="slider-container" style="position: relative; width: 100%; max-width: 80%; overflow: hidden;">
+			<!-- Bottom Image -->
+			<img src="/before-after/building_out_4.png" style="width: 100%; display: block;" />
+			<!-- Top Image (clipped) -->
+			<div id="slider-overlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden;">
+				<img src="/before-after/building_out_5.png" style="width: 100%;" />
+			</div>
+			<!-- Slider Line -->
+			<div id="slider-line" style="position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background-color: #fff; cursor: ew-resize; z-index: 10;"></div>
+		</div>
 
 		<h1 style="text-align: center; font-size: 8rem; font-weight: bold; line-height: 1.4; color: #111;"> 📷Qualitative Comparison </h1> 
 		<p style="text-align: left; font-size: 4rem; color: #555;"> 📑1. Qualitative comparison of Voyager against other baselines on the SmallCity scene from HierarchicalGS   </p>
