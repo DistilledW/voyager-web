@@ -117,7 +117,7 @@ body {
 .bal-container-small {
     position: relative;
     width: 33vw;
-    aspect-ratio: 16 / 12;
+    aspect-ratio: 16 / 10;
     cursor: grab;
     overflow: hidden;
     border-radius: 10px;
@@ -185,10 +185,6 @@ body {
     padding: 2px 10px;
 }
 
-.bal-beforePosition.beforeLabel {
-    font-size: 2rem;
-}
-
 .bal-afterPosition {
     background: #474646;
     color: #fff;
@@ -198,8 +194,12 @@ body {
     padding: 2px 10px;
 }
 
+.bal-beforePosition.beforeLabel {
+    font-size: 4rem;
+}
+
 .bal-afterPosition.afterLabel {
-    font-size: 2rem;
+    font-size: 4rem;
 }
 
 .beforeLabel {
