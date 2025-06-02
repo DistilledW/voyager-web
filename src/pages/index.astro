@@ -3,73 +3,73 @@ import Layout from '@layouts/Layout.astro';
 const title = 'Home';
 ---
 
-<Layout>
-	<style>
-		* { box-sizing: border-box; }
-		body, html {
-			margin: 0; padding: 0; height: 100vh; /* 全屏高度 */
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			background: #222;
-		}
-		.container {
-			position: relative;
-			width: 80vw;   
-			height: 70vh; 
-			overflow: hidden;
-			user-select: none;
-		}
-		.img-before, .img-after {
-			position: absolute;
-			top: 0; bottom: 0;
-			height: 100%;
-			width: 100%;
-			object-fit: cover;
-		}
-		.img-before {
-			z-index: 1;
-		}
-		.img-after {
-			z-index: 2;
-			width: 50%; 
-			overflow: hidden;
-			clip-path: inset(0 50% 0 0); 
-		}
-		/* 这里用clip-path实现裁剪，js会动态修改clip-path的right百分比 */
+<style>
+	* { box-sizing: border-box; }
+	body, html {
+		margin: 0; padding: 0; height: 100vh; /* 全屏高度 */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #222;
+	}
+	.container {
+		position: relative;
+		width: 80vw;   
+		height: 70vh; 
+		overflow: hidden;
+		user-select: none;
+	}
+	.img-before, .img-after {
+		position: absolute;
+		top: 0; bottom: 0;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+	.img-before {
+		z-index: 1;
+	}
+	.img-after {
+		z-index: 2;
+		width: 50%; 
+		overflow: hidden;
+		clip-path: inset(0 50% 0 0); 
+	}
+	/* 这里用clip-path实现裁剪，js会动态修改clip-path的right百分比 */
 
-		/* 滑块样式 */
-		.slider {
-			position: absolute;
-			top: 0; bottom: 0;
-			left: 50%; /* 初始50% */
-			width: 3px;
-			background: #fff;
-			cursor: ew-resize;
-			z-index: 3;
-			transition: background 0.3s;
-		}
-		.slider:hover {
-			background: #0af;
-		}
-		/* 滑块左右两边的小圆点，方便拖动 */
-		.slider::before, .slider::after {
-			content: '';
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 15px;
-			height: 15px;
-			background: #fff;
-			border-radius: 50%;
-		}
-		.slider::before {
-			left: -6px;
-		}
-		.slider::after {
-			right: -6px;
-		}
-	</style> 
+	/* 滑块样式 */
+	.slider {
+		position: absolute;
+		top: 0; bottom: 0;
+		left: 50%; /* 初始50% */
+		width: 3px;
+		background: #fff;
+		cursor: ew-resize;
+		z-index: 3;
+		transition: background 0.3s;
+	}
+	.slider:hover {
+		background: #0af;
+	}
+	/* 滑块左右两边的小圆点，方便拖动 */
+	.slider::before, .slider::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 15px;
+		height: 15px;
+		background: #fff;
+		border-radius: 50%;
+	}
+	.slider::before {
+		left: -6px;
+	}
+	.slider::after {
+		right: -6px;
+	}
+</style> 
+<Layout>
 	<div data-sb-object-id="a59d87e4-e3ff-4929-acc1-d67b1808d36c" 
 		style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem; width: 100%; box-sizing: border-box;">
 		<h1 style="text-align: center; font-size: 12rem; font-weight: bold; line-height: 1.4; color: #111;">
@@ -108,4 +108,33 @@ const title = 'Home';
 
 		<h1 style="text-align: center; font-size: 4rem; font-weight: bold; line-height: 1.4; color: #111;"> Voyager @ 2025 </h1> 
     </div> 
+	<script>
+		const container = document.getElementById('container');
+		const slider = document.getElementById('slider');
+		const imgAfter = container.querySelector('.img-after');
+
+		let isDragging = false;
+		slider.addEventListener('mousedown', e => {
+			isDragging = true;
+			document.body.style.userSelect = 'none';
+		});
+		window.addEventListener('mouseup', e => {
+			isDragging = false;
+			document.body.style.userSelect = '';
+		});
+		window.addEventListener('mousemove', e => {
+			if (!isDragging) return;
+			let rect = container.getBoundingClientRect();
+			let offsetX = e.clientX - rect.left;
+
+			if (offsetX < 0) offsetX = 0;
+			if (offsetX > rect.width) offsetX = rect.width;
+
+			let percent = (offsetX / rect.width) * 100;
+
+			slider.style.left = percent + '%';
+			imgAfter.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+			imgAfter.style.width = percent + '%';
+		});
+	</script>
 </Layout> 
