@@ -116,7 +116,7 @@ body {
 
 .bal-container-small {
     position: relative;
-    width: 35vw;
+    width: 32vw;
     aspect-ratio: 1 / 1;
     cursor: grab;
     overflow: hidden;
