@@ -117,7 +117,7 @@ body {
 .bal-container-small {
     position: relative;
     width: 33vw;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 12;
     cursor: grab;
     overflow: hidden;
     border-radius: 10px;
@@ -183,6 +183,10 @@ body {
     pointer-events: none;
     border-radius: 0.2rem;
     padding: 2px 10px;
+}
+
+.bal-beforePosition.beforeLabel {
+    font-size: 2rem;
 }
 
 .bal-afterPosition {
