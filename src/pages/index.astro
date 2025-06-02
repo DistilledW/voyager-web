@@ -2,56 +2,18 @@
 import Layout from '@layouts/Layout.astro';
 const title = 'Home';
 ---
-
-<style>
-	* { box-sizing: border-box; }
-	body, html {
-		margin: 0; padding: 0; height: 100vh; /* 全屏高度 */
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: #222;
-	}
-	.container {
-		position: relative;
-		width: 80vw;   
-		height: 70vh; 
-		overflow: hidden;
-		user-select: none;
-	}
-	.img-before, .img-after {
-		position: absolute;
-		top: 0; bottom: 0;
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
-	}
-	.img-before {
-		z-index: 1;
-	}
-	.img-after {
-		z-index: 2;
-		width: 50%; 
-		overflow: hidden;
-		clip-path: inset(0 50% 0 0); 
-	}
-	/* 这里用clip-path实现裁剪，js会动态修改clip-path的right百分比 */
-
-	/* 滑块样式 */
+<style> 
 	.slider {
 		position: absolute;
 		top: 0; bottom: 0;
-		left: 50%; /* 初始50% */
+		left: 50%;
 		width: 3px;
 		background: #fff;
 		cursor: ew-resize;
 		z-index: 3;
 		transition: background 0.3s;
 	}
-	.slider:hover {
-		background: #0af;
-	}
-	/* 滑块左右两边的小圆点，方便拖动 */
+	.slider:hover {background: #0af;}
 	.slider::before, .slider::after {
 		content: '';
 		position: absolute;
@@ -62,13 +24,10 @@ const title = 'Home';
 		background: #fff;
 		border-radius: 50%;
 	}
-	.slider::before {
-		left: -6px;
-	}
-	.slider::after {
-		right: -6px;
-	}
-</style> 
+	.slider::before {left: -6px;}
+	.slider::after {right: -6px;}
+</style>
+
 <Layout>
 	<div data-sb-object-id="a59d87e4-e3ff-4929-acc1-d67b1808d36c" 
 		style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem; width: 100%; box-sizing: border-box;">
@@ -81,11 +40,10 @@ const title = 'Home';
 		<video src="https://pub-6802ae6d29224c06bd794485679d3884.r2.dev/demo.mp4" controls muted loop style="max-width: 100%; height: auto;">
 		  	The browser you are using does not support the video tag. 
 		</video>
-		
 		<h1 style="text-align: center; font-size: 8rem; font-weight: bold; line-height: 1.4; color: #111;"> 🔍Comparison </h1> 
-		<div class="container" id="container">
-			<img src="/before-after/building_out_4.png" alt="Before" class="img-before" />
-			<img src="/before-after/building_out_5.png" alt="After" class="img-after" />
+		<div id="slider-container" style="position: relative; width: 70%; overflow: hidden; user-select: none;">
+			<img src="/before-after/building_out_4.png" alt="Before" class="img-before" style="position: absolute; top: 0; bottom: 0; width: 100%; object-fit: cover; z-index: 1;" />
+			<img src="/before-after/building_out_5.png" alt="After" class="img-after" style="position: absolute; top: 0; bottom: 0; width: 50%; object-fit: cover; z-index: 2; overflow: hidden; clip-path: inset(0 50% 0 0); " />
 			<div class="slider" id="slider"></div>
 		</div>
 
@@ -109,7 +67,7 @@ const title = 'Home';
 		<h1 style="text-align: center; font-size: 4rem; font-weight: bold; line-height: 1.4; color: #111;"> Voyager @ 2025 </h1> 
     </div> 
 	<script>
-		const container = document.getElementById('container');
+		const container = document.getElementById('slider-container');
 		const slider = document.getElementById('slider');
 		const imgAfter = container.querySelector('.img-after');
 
