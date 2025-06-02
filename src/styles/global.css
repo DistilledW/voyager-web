@@ -194,6 +194,10 @@ body {
     padding: 2px 10px;
 }
 
+.bal-afterPosition.afterLabel {
+    font-size: 2rem;
+}
+
 .beforeLabel {
     position: absolute;
     bottom: 0;
