@@ -4,7 +4,73 @@ const title = 'Home';
 ---
 
 <Layout>
-    <div data-sb-object-id="a59d87e4-e3ff-4929-acc1-d67b1808d36c" 
+	<style>
+		* { box-sizing: border-box; }
+		body, html {
+			margin: 0; padding: 0; height: 100vh; /* 全屏高度 */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: #222;
+		}
+		.container {
+			position: relative;
+			width: 80vw;   
+			height: 70vh; 
+			overflow: hidden;
+			user-select: none;
+		}
+		.img-before, .img-after {
+			position: absolute;
+			top: 0; bottom: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+		.img-before {
+			z-index: 1;
+		}
+		.img-after {
+			z-index: 2;
+			width: 50%; 
+			overflow: hidden;
+			clip-path: inset(0 50% 0 0); 
+		}
+		/* 这里用clip-path实现裁剪，js会动态修改clip-path的right百分比 */
+
+		/* 滑块样式 */
+		.slider {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 50%; /* 初始50% */
+			width: 3px;
+			background: #fff;
+			cursor: ew-resize;
+			z-index: 3;
+			transition: background 0.3s;
+		}
+		.slider:hover {
+			background: #0af;
+		}
+		/* 滑块左右两边的小圆点，方便拖动 */
+		.slider::before, .slider::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 15px;
+			height: 15px;
+			background: #fff;
+			border-radius: 50%;
+		}
+		.slider::before {
+			left: -6px;
+		}
+		.slider::after {
+			right: -6px;
+		}
+	</style> 
+	<div data-sb-object-id="a59d87e4-e3ff-4929-acc1-d67b1808d36c" 
 		style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem; width: 100%; box-sizing: border-box;">
 		<h1 style="text-align: center; font-size: 12rem; font-weight: bold; line-height: 1.4; color: #111;">
 			Voyager: Real-Time Splatting City-Scale 3D Gaussians on Your Phone
@@ -17,56 +83,12 @@ const title = 'Home';
 		</video>
 		
 		<h1 style="text-align: center; font-size: 8rem; font-weight: bold; line-height: 1.4; color: #111;"> 🔍Comparison </h1> 
-		<div id="slider-container" style="position: relative; width: 70%; overflow: hidden;">
-			<!-- Bottom Image -->
-			<img src="/before-after/building_out_4.png" style="width: 100%; display: block;" />
-			<!-- Top Image (clipped) -->
-			<div id="slider-overlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden;">
-				<img src="/before-after/building_out_5.png" style="width: 100%;" />
-			</div>
-			<!-- Slider Line -->
-			<div id="slider-line" style="position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background-color: #fff; cursor: ew-resize; z-index: 10;"></div>
+		<div class="container" id="container">
+			<img src="/before-after/building_out_4.png" alt="Before" class="img-before" />
+			<img src="/before-after/building_out_5.png" alt="After" class="img-after" />
+			<div class="slider" id="slider"></div>
 		</div>
-		<script>
-			const container = document.getElementById('slider-container');
-			const overlay = document.getElementById('slider-overlay');
-			const line = document.getElementById('slider-line');
 
-			let isDragging = false;
-
-			container.addEventListener('mousedown', (e) => {
-				isDragging = true;
-			});
-
-			container.addEventListener('mouseup', () => {
-				isDragging = false;
-			});
-
-			container.addEventListener('mouseleave', () => {
-				isDragging = false;
-			});
-
-			container.addEventListener('mousemove', (e) => {
-				if (!isDragging) return;
-
-				const rect = container.getBoundingClientRect();
-				let x = e.clientX - rect.left;
-				x = Math.max(0, Math.min(x, rect.width)); // clamp within bounds
-
-				overlay.style.width = `${x}px`;
-				line.style.left = `${x}px`;
-			});
-			// Optional: Support touch devices
-			container.addEventListener('touchmove', (e) => {
-				const touch = e.touches[0];
-				const rect = container.getBoundingClientRect();
-				let x = touch.clientX - rect.left;
-				x = Math.max(0, Math.min(x, rect.width));
-
-				overlay.style.width = `${x}px`;
-				line.style.left = `${x}px`;
-			});
-		</script>
 		<h1 style="text-align: center; font-size: 8rem; font-weight: bold; line-height: 1.4; color: #111;"> 📷Qualitative Comparison </h1> 
 		<p style="text-align: left; font-size: 4rem; color: #555;"> 📑1. Qualitative comparison of Voyager against other baselines on the SmallCity scene from HierarchicalGS   </p>
 		<img src="/figs/smallcity.png" alt="PDF preview" style="max-width: 70%; height: auto;" />
