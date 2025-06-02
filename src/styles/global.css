@@ -195,11 +195,11 @@ body {
 }
 
 .bal-beforePosition.beforeLabel {
-    font-size: 4rem;
+    font-size: 1rem;
 }
 
 .bal-afterPosition.afterLabel {
-    font-size: 4rem;
+    font-size: 1rem;
 }
 
 .beforeLabel {
