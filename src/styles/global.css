@@ -350,7 +350,7 @@ body {
 .link {
   display: inline-block;
   padding: 0.4rem 1.2rem;
-  border: 2px solid #05000070;
+  border: 2px #05000070;
   color: #000000;
   border-radius: 999px; 
   text-decoration: none;
