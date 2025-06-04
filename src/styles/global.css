@@ -350,7 +350,7 @@ body {
 .link {
   display: inline-block;
   padding: 0.4rem 1.2rem;
-  border: 2px solid #050000;
+  border: 2px solid #0500009c;
   color: #000000;
   border-radius: 999px; 
   text-decoration: none;
@@ -363,4 +363,10 @@ body {
 .link:hover {
   background-color: #050505;
   color: white;
+}
+.icon {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+  margin-right: 0.4rem;
 }
