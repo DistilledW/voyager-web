@@ -350,8 +350,8 @@ body {
 .link {
   display: inline-block;
   padding: 0.4rem 1.2rem;
-  border: 2px solid #3a23e8;
-  color: #3a23e8;
+  border: 2px solid #09090902;
+  color: #000000;
   border-radius: 999px; 
   text-decoration: none;
   font-weight: bold;
@@ -361,6 +361,6 @@ body {
 }
 
 .link:hover {
-  background-color: #3a23e8;
+  background-color: #050505;
   color: white;
 }
